@@ -91,6 +91,7 @@ vision-english/
 │   │   └── mic_on.mp3
 │   └── icons/              # Ikon aplikasi
 └── README.md               # Dokumentasi ini
+
 🚀 Instalasi dan Menjalankan
 Prasyarat
 Python 3.7+
