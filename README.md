@@ -49,20 +49,7 @@ Kategori	Teknologi
 Backend	Flask, PyTorch, YOLO-OBB, OpenCV
 Frontend	HTML5, CSS3, JavaScript, Web Speech API, MediaDevices API
 Infrastruktur	Python 3.7+
-🗂️ Struktur Proyek
-text
-vision-english/
-├── app_obb.py              # Logika utama server Flask
-├── models/
-│   └── best.pt             # Model deteksi objek terlatih
-├── static/
-│   ├── audio/              # File audio pengucapan .mp3
-│   ├── sounds/             # Efek suara (benar, salah, dll.)
-│   └── icons/              # Ikon UI
-├── templates/
-│   ├── main.html           # Halaman utama aplikasi
-│   └── splash.html         # Halaman pembuka
-└── README.md
+
 🤝 Berkontribusi
 Kami sangat terbuka untuk kontribusi! Jika Anda ingin membantu, silakan:
 
@@ -84,6 +71,6 @@ Punya pertanyaan atau masukan?
 
 Buka Issue di repositori GitHub ini.
 
-Hubungi via Email: namaanda@email.com.
+Hubungi via Email: muhammadarifmukti@gmail.com.
 
 <p align="center"> Dibuat dengan ❤️ untuk para pembelajar bahasa. <br> <strong>Jangan lupa berikan ⭐ jika Anda menyukai proyek ini!</strong> </p>
