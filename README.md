@@ -138,31 +138,32 @@ Izinkan akses kamera dan mikrofon saat diminta
 Aplikasi dapat mendeteksi 25+ objek sehari-hari:
 
 Bahasa Inggris	Bahasa Indonesia
-banana	pisang
-bowl	mangkuk
+banana	pisang,
+bowl	mangkuk,
 coin	koin
-cucumber	mentimun
-cup	cangkir
-eraser	penghapus
-fork	garpu
-glass	gelas
-hair comb	sisir rambut
-hanger	gantungan baju
-long purple eggplant	terong ungu panjang
-nail clippers	pemotong kuku
-pen	pena
-pencil	pensil
-pencil sharpener	serutan pensil
-phone charger	charger hp
-plastic water bottle	botol air plastik
-plate	piring
-ruler	penggaris
-rupiah banknote	uang kertas rupiah
-scissors	gunting
-snake fruit	salak
-spoon	sendok
-tomato	tomat
-whiteboard marker	spidol papan tulis
+cucumber	mentimun,
+cup	cangkir,
+eraser	penghapus,
+fork	garpu,
+glass	gelas,
+hair comb	sisir rambut,
+hanger	gantungan baju,
+long purple eggplant	terong ungu panjang,
+nail clippers	pemotong kuku,
+pen	pena,
+pencil	pensil,
+pencil sharpener	serutan pensil,
+phone charger	charger hp,
+plastic water bottle	botol air plastik,
+plate	piring,
+ruler	penggaris,
+rupiah banknote	uang kertas rupiah,
+scissors	gunting,
+snake fruit	salak,
+spoon	sendok,
+tomato	tomat,
+whiteboard marker	spidol papan tulis,
+
 🎮 Cara Menggunakan
 Buka aplikasi di browser
 
