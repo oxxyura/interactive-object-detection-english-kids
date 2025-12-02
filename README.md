@@ -1,76 +1,139 @@
-<p align="center"> <img src="URL_TO_YOUR_PROJECT_LOGO_OR_BANNER" alt="Vision English Banner" width="700"> </p> <h1 align="center">Vision English</h1> <p align="center"> <strong>Belajar Bahasa Inggris jadi lebih mudah dan interaktif dengan kekuatan Computer Vision.</strong> <br> Cukup arahkan kamera, deteksi objek, dengarkan pengucapannya, dan latih pelafalan Anda! </p> <p align="center"> <img alt="Python Version" src="https://img.shields.io/badge/python-3.7%2B-blue"> <img alt="Framework" src="https://img.shields.io/badge/framework-Flask-black"> <img alt="Deep Learning" src="https://img.shields.io/badge/engine-PyTorch%20%26%20YOLO--OBB-orange"> <img alt="License" src="https://img.shields.io/badge/license-MIT-green"> </p>
-<p align="center"> <img src="URL_TO_YOUR_APP_DEMO_GIF" alt="Demonstrasi Aplikasi Vision English" width="600"> <br> <em>(Contoh penggunaan aplikasi Vision English)</em> </p>
-✨ Fitur Unggulan
-👁️ Deteksi Objek Real-Time﻿: Menggunakan model YOLO-OBB untuk mengenali 25+ objek secara akurat melalui kamera perangkat Anda.​
+# 📸 Deteksi Objek YOLO-OBB Bahasa Indonesia
 
-🗣️ Latihan Pengucapan Interaktif: Dapatkan feedback﻿ ✅ / ❌ secara langsung saat Anda melatih pelafalan bahasa Inggris menggunakan Web Speech API.
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-2.0%2B-green?style=for-the-badge&logo=flask&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
+![YOLO](https://img.shields.io/badge/YOLO-OBB-yellow?style=for-the-badge)
 
-🎧 Audio Berkualitas: Setiap kosakata dilengkapi dengan audio pengucapan yang jernih. Jika gagal, fitur Text-to-Speech akan menjadi cadangan.
+> Aplikasi web sederhana untuk mendeteksi objek secara *real-time* menggunakan model YOLO Oriented Bounding Box (OBB), lengkap dengan pelafalan suara dalam Bahasa Indonesia.
 
-📱 Desain Responsif & Modern: Antarmuka yang ramah pengguna, bekerja dengan baik di desktop maupun perangkat seluler.
+---
 
-⚙️ Mudah Dikonfigurasi: Sesuaikan threshold﻿ deteksi, tambahkan terjemahan, dan koreksi nama kelas dengan mudah langsung dari kode.
+## 📖 Daftar Isi
+- [Tentang Proyek](#-tentang-proyek)
+- [Fitur Utama](#-fitur-utama)
+- [Struktur Folder](#-struktur-folder)
+- [Instalasi & Penggunaan](#-instalasi--penggunaan)
+- [Dukungan GPU](#-dukungan-gpu)
+- [Lisensi](#-lisensi)
 
-🚀 Memulai
-Prasyarat
-Python 3.7+
+---
 
-pip (Manajer paket Python)
+## 🧐 Tentang Proyek
 
-Browser modern (Chrome/Edge direkomendasikan) dengan izin akses kamera & mikrofon.
+Proyek ini dirancang untuk membantu pengguna (khususnya anak-anak atau pembelajar bahasa) mengenali nama-nama objek di sekitar mereka. Menggunakan kamera perangkat, aplikasi akan memindai objek, memberikan label dalam **Bahasa Indonesia**, dan dapat memutar **audio pelafalan** nama objek tersebut.
 
-Langkah Instalasi & Menjalankan
-Clone Repository
+Dibangun dengan **Flask** sebagai backend dan **YOLOv8/11 OBB** untuk deteksi objek dengan orientasi yang presisi.
 
-bash
-git clone https://github.com/username/vision-english.git
-cd vision-english
-Instal Dependensi
+---
 
-bash
+## ✨ Fitur Utama
+- 📷 **Deteksi Real-time**: Menggunakan kamera web atau kamera ponsel.
+- 🔄 **Oriented Bounding Box**: Deteksi objek yang miring atau berputar dengan lebih akurat.
+- 🇮🇩 **Bahasa Indonesia**: Output nama kelas langsung diterjemahkan.
+- 🔊 **Fitur Suara**: Klik tombol untuk mendengarkan nama objek.
+- 🚀 **Ringan**: Antarmuka sederhana dan responsif.
+
+---
+
+## 📂 Struktur Folder
+
+Pastikan susunan file Anda terlihat seperti ini agar aplikasi berjalan lancar:
+
+/my-yolo-app
+│
+├── 📁 models
+│ └── best.pt # File model YOLO hasil training Anda
+│
+├── 📁 static
+│ └── 📁 audio
+│ ├── pisang.mp3 # File audio per kelas objek
+│ ├── mangkuk.mp3
+│ └── ...
+│
+├── 📁 templates
+│ ├── main.html # Halaman utama (kamera & hasil)
+│ └── splash.html # Halaman pembuka
+│
+├── app_obb.py # Server utama Flask
+├── requirements.txt # Daftar pustaka Python
+└── README.md # Dokumentasi ini
+
+text
+
+---
+
+## 🛠 Instalasi & Penggunaan
+
+Ikuti langkah-langkah ini untuk menjalankan aplikasi dari nol.
+
+### 1. Clone atau Unduh Repository
+git clone https://github.com/username-anda/nama-repo.git
+cd nama-repo
+
+text
+
+### 2. Siapkan Virtual Environment
+Disarankan menggunakan lingkungan virtual agar instalasi bersih.
+
+**Windows:**
+python -m venv venv
+.\venv\Scripts\activate
+
+text
+
+**Mac/Linux:**
+python3 -m venv venv
+source venv/bin/activate
+
+text
+
+### 3. Instal Dependensi
+Instal semua pustaka yang dibutuhkan:
 pip install -r requirements.txt
-# Atau instal manual:
-# pip install flask torch torchvision ultralytics opencv-python numpy
-Setup Model & Aset
 
-Letakkan model best.pt Anda di dalam direktori models/.
+text
+*Jika belum ada `requirements.txt`, instal manual:*
+pip install flask ultralytics opencv-python numpy
 
-Isi direktori static/audio/ dengan file .mp3 untuk setiap kosakata (contoh: banana.mp3).
+text
 
-Jalankan Aplikasi
+### 4. Siapkan Model & Audio
+- Pastikan file model (`best.pt`) sudah ada di folder `models/`.
+- Pastikan file suara (`.mp3`) sudah ada di folder `static/audio/`.
 
-bash
+### 5. Jalankan Aplikasi
 python app_obb.py
-Akses Aplikasi
-Buka browser dan navigasi ke http://localhost:5000. Berikan izin untuk kamera dan mikrofon saat diminta.
 
-🛠️ Tumpukan Teknologi (Tech Stack﻿)
-Kategori	Teknologi
-Backend	Flask, PyTorch, YOLO-OBB, OpenCV
-Frontend	HTML5, CSS3, JavaScript, Web Speech API, MediaDevices API
-Infrastruktur	Python 3.7+
+text
+Akses aplikasi di browser melalui:
+👉 [**http://127.0.0.1:5000/**](http://127.0.0.1:5000/)
 
-🤝 Berkontribusi
-Kami sangat terbuka untuk kontribusi! Jika Anda ingin membantu, silakan:
+---
 
-Fork repositori ini.
+## ⚡ Dukungan GPU (Opsional)
 
-Buat Branch Baru (git checkout -b fitur-keren-baru).
+Agar deteksi berjalan lebih cepat (FPS tinggi), gunakan GPU NVIDIA. Anda perlu menginstal **PyTorch versi CUDA**.
 
-Lakukan perubahan dan Commit (git commit -m 'Menambahkan fitur keren baru').
+Hapus PyTorch lama (jika ada), lalu jalankan:
+pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu118
 
-Push ke branch Anda (git push origin fitur-keren-baru).
+text
+*(Sesuaikan `cu118` dengan versi CUDA di driver VGA Anda)*
 
-Buat Pull Request.
+---
 
-📄 Lisensi
-Proyek ini berada di bawah Lisensi MIT. Lihat file LICENSE untuk detail lebih lanjut.
+## 📜 Lisensi
 
-📧 Kontak
-Punya pertanyaan atau masukan?
+Didistribusikan di bawah Lisensi MIT. Lihat `LICENSE` untuk informasi lebih lanjut.
 
-Buka Issue di repositori GitHub ini.
+---
+*Dibuat dengan ❤️ untuk edukasi.*
+Tips Agar Tampilan GitHub Makin Menarik
+Badge/Lencana: Bagian paling atas menggunakan badge (seperti "Python", "Flask") yang membuat repo terlihat profesional.
 
-Hubungi via Email: muhammadarifmukti@gmail.com.
+Emoji: Penggunaan emoji yang relevan (📂, 🛠, ✨) membantu pembaca memindai bagian-bagian penting dengan cepat.​​
 
-<p align="center"> Dibuat dengan ❤️ untuk para pembelajar bahasa. <br> <strong>Jangan lupa berikan ⭐ jika Anda menyukai proyek ini!</strong> </p>
+Highlight Code: Blok kode (```bash) memberikan warna sintaks yang memudahkan pembaca membedakan perintah terminal dengan teks biasa [web:3].
+
+Struktur Jelas: Menggunakan "Daftar Isi" dan "Struktur Folder" memberikan kejelasan navigasi bagi pengembang lain yang ingin berkontribusi [web:5].
