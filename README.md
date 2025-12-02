@@ -68,7 +68,7 @@ text
 Ikuti langkah-langkah ini untuk menjalankan aplikasi dari nol.
 
 ### 1. Clone atau Unduh Repository
-git clone https://github.com/username-anda/nama-repo.git
+git clone https://github.com/username-anda/nama-repo.git](https://github.com/oxxyura/interactive-object-detection-english-kids
 cd nama-repo
 
 text
