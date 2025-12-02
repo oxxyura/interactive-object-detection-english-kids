@@ -1,0 +1,347 @@
+/* === Base Styles === */
+:root {
+  --primary-color: #FF6B6B;
+  --secondary-color: #4ECDC4;
+  --accent-color: #FFA07A;
+  --dark-color: #556270;
+  --light-color: #F7FFF7;
+  --success-color: #6BCB77;
+  --warning-color: #FFD166;
+  --error-color: #FF6B6B;
+}
+
+.hidden {
+  display: none !important;
+}
+
+body {
+  font-family: "Comic Neue", cursive;
+  background-color: #F9F7F7;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  touch-action: manipulation;
+}
+
+/* === Header Styles === */
+h1 {
+  color: var(--primary-color);
+  font-size: 1.8rem;
+  margin: 1rem 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  padding: 0 1rem;
+  text-align: center;
+}
+
+/* === Video and Canvas Containers === */
+.video-container, .upload-container {
+  position: relative;
+  width: 95%;
+  max-width: 640px;
+  margin: 1rem auto;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  background: #000;
+}
+
+video, canvas, #uploadedImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.video-container canvas,
+.upload-container canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+/* === Button Controls === */
+.controls-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  width: 100%;
+  max-width: 640px;
+}
+
+.button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16);
+  min-width: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.upload-label {
+  background-color: var(--secondary-color);
+}
+
+#clearUploadBtn {
+  background-color: var(--dark-color);
+}
+
+/* === Language Toggle === */
+.language-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100;
+}
+
+.language-btn {
+  background: var(--dark-color);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.2s;
+}
+
+.language-btn:hover {
+  transform: scale(1.05);
+}
+
+/* === Upload Section === */
+#uploadInput {
+  display: none;
+}
+
+#uploadedWrapper {
+  width: 95%;
+  max-width: 640px;
+  margin: 1rem auto;
+}
+
+/* === Pronunciation Controls === */
+#audioControls {
+  width: 95%;
+  max-width: 640px;
+  margin: 2rem auto;
+  background: white;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+#audioControls h2 {
+  color: var(--dark-color);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+#pronounceButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pronounce-btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: center;
+  padding: 1rem;
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 10px;
+}
+
+.pronounce-btn {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.pronounce-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.translation-text {
+  font-size: 1.2rem;
+  color: var(--dark-color);
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+/* === Status Messages === */
+#loading, #noDetectionMessage {
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+}
+
+#loading {
+  color: var(--dark-color);
+  background-color: rgba(78, 205, 196, 0.2);
+}
+
+#noDetectionMessage {
+  color: var(--error-color);
+  background-color: rgba(255, 107, 107, 0.1);
+}
+
+/* === Pronunciation Modal === */
+#popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#pronunciationModal {
+  background: white;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 400px;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  color: #888;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+#modalWord {
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+#modalMic {
+  font-size: 3rem;
+  margin: 1rem 0;
+}
+
+#modalSpoken {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+  min-height: 1.5rem;
+}
+
+#modalFeedback {
+  font-size: 1.2rem;
+  margin: 1.5rem 0;
+  min-height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#retrySpeechBtn {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+#retrySpeechBtn:hover {
+  background-color: var(--dark-color);
+}
+
+/* === Responsive Adjustments === */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.5rem;
+    margin: 0.8rem 0;
+  }
+  
+  .button, .pronounce-btn {
+    padding: 0.7rem 1.2rem;
+    font-size: 1rem;
+    min-width: 140px;
+  }
+  
+  #audioControls {
+    padding: 1rem;
+  }
+  
+  #pronunciationModal {
+    padding: 1.5rem;
+  }
+}
