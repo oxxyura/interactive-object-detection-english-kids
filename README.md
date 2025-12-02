@@ -1,285 +1,89 @@
-🎯 Vision English
-Aplikasi pembelajaran kosakata bahasa Inggris interaktif berbasis Computer Vision dan Object Detection
+<p align="center"> <img src="URL_TO_YOUR_PROJECT_LOGO_OR_BANNER" alt="Vision English Banner" width="700"> </p> <h1 align="center">Vision English</h1> <p align="center"> <strong>Belajar Bahasa Inggris jadi lebih mudah dan interaktif dengan kekuatan Computer Vision.</strong> <br> Cukup arahkan kamera, deteksi objek, dengarkan pengucapannya, dan latih pelafalan Anda! </p> <p align="center"> <img alt="Python Version" src="https://img.shields.io/badge/python-3.7%2B-blue"> <img alt="Framework" src="https://img.shields.io/badge/framework-Flask-black"> <img alt="Deep Learning" src="https://img.shields.io/badge/engine-PyTorch%20%26%20YOLO--OBB-orange"> <img alt="License" src="https://img.shields.io/badge/license-MIT-green"> </p>
+<p align="center"> <img src="URL_TO_YOUR_APP_DEMO_GIF" alt="Demonstrasi Aplikasi Vision English" width="600"> <br> <em>(Contoh penggunaan aplikasi Vision English)</em> </p>
+✨ Fitur Unggulan
+👁️ Deteksi Objek Real-Time﻿: Menggunakan model YOLO-OBB untuk mengenali 25+ objek secara akurat melalui kamera perangkat Anda.​
 
-Vision English adalah aplikasi web yang membantu pengguna belajar kosakata bahasa Inggris melalui deteksi objek real-time﻿. Aplikasi ini mengenali objek sehari-hari melalui kamera, menampilkan nama dalam bahasa Inggris, memutar audio pengucapan, dan memberikan latihan pronunciation﻿ interaktif.​
+🗣️ Latihan Pengucapan Interaktif: Dapatkan feedback﻿ ✅ / ❌ secara langsung saat Anda melatih pelafalan bahasa Inggris menggunakan Web Speech API.
 
-✨ Fitur Utama
-🎯 Object Detection
-Deteksi objek real-time﻿ menggunakan kamera perangkat (smartphone/PC)
+🎧 Audio Berkualitas: Setiap kosakata dilengkapi dengan audio pengucapan yang jernih. Jika gagal, fitur Text-to-Speech akan menjadi cadangan.
 
-Mendukung 25 objek sehari-hari seperti pisang, mangkuk, gunting, tomat, sendok
+📱 Desain Responsif & Modern: Antarmuka yang ramah pengguna, bekerja dengan baik di desktop maupun perangkat seluler.
 
-Menggunakan YOLO-OBB untuk deteksi akurat​
+⚙️ Mudah Dikonfigurasi: Sesuaikan threshold﻿ deteksi, tambahkan terjemahan, dan koreksi nama kelas dengan mudah langsung dari kode.
 
-Konfigurasi threshold﻿ untuk setiap kelas objek
-
-🔊 Pembelajaran Audio
-Audio pengucapan untuk setiap kosakata bahasa Inggris
-
-Fallback﻿ ke Text-to-Speech browser jika file audio tidak tersedia
-
-Fitur "🔊 Dengarkan" untuk mendengarkan pengucapan yang benar
-
-🎤 Latihan Pengucapan
-Sistem speech recognition﻿ untuk menilai pengucapan pengguna
-
-Feedback﻿ langsung: ✅ Benar / ❌ Salah
-
-Suara notifikasi untuk setiap aksi (mic on﻿, benar, salah)
-
-Batasan waktu rekam (5 detik)
-
-🎨 UI/UX yang Menarik
-Splash screen﻿ dengan animasi interaktif
-
-Antarmuka responsif (mobile & desktop)
-
-Animasi loading﻿ dan transisi yang halus
-
-Popup﻿ informasi dan feedback﻿ yang intuitif
-
-📱 Fitur Bantuan
-Daftar lengkap objek yang dapat dideteksi
-
-Petunjuk penggunaan yang jelas
-
-Tombol bantuan dengan ikon "?" yang mudah diakses
-
-🛠️ Teknologi yang Digunakan
-Backend
-Flask - Python web framework
-
-YOLO-OBB - Object Detection model​
-
-PyTorch - Deep Learning framework
-
-OpenCV - Computer Vision processing​
-
-Frontend
-HTML5, CSS3, JavaScript
-
-Web Speech API - Speech Recognition & Synthesis
-
-MediaDevices API - Camera access
-
-CSS Animations - UI effects
-
-Asset
-File audio MP3 untuk setiap kosakata
-
-Efek suara untuk feedback﻿ (correct/wrong/mic_on)
-
-Ikon dan gambar visual
-
-📁 Struktur Proyek
-text
-vision-english/
-├── app_obb.py              # Server Flask utama
-├── models/
-│   └── best.pt             # Model YOLO-OBB terlatih
-├── templates/
-│   ├── splash.html         # Halaman splash screen
-│   └── main.html           # Halaman utama aplikasi
-├── static/
-│   ├── audio/              # File audio pengucapan (.mp3)
-│   │   ├── banana.mp3
-│   │   ├── spoon.mp3
-│   │   └── ...
-│   ├── sounds/             # Efek suara
-│   │   ├── correct.mp3
-│   │   ├── wrong.mp3
-│   │   └── mic_on.mp3
-│   └── icons/              # Ikon aplikasi
-└── README.md               # Dokumentasi ini
-
-🚀 Instalasi dan Menjalankan
+🚀 Memulai
 Prasyarat
 Python 3.7+
 
-pip (Python package manager)
+pip (Manajer paket Python)
 
-Web browser modern dengan akses kamera dan mikrofon
+Browser modern (Chrome/Edge direkomendasikan) dengan izin akses kamera & mikrofon.
 
-Langkah Instalasi
-Clone repository
+Langkah Instalasi & Menjalankan
+Clone Repository
 
 bash
-git clone <repository-url>
+git clone https://github.com/username/vision-english.git
 cd vision-english
-Instal dependensi Python
+Instal Dependensi
 
 bash
-pip install flask torch torchvision ultralytics opencv-python numpy
-Siapkan model YOLO-OBB
+pip install -r requirements.txt
+# Atau instal manual:
+# pip install flask torch torchvision ultralytics opencv-python numpy
+Setup Model & Aset
 
-Letakkan file model best.pt di folder models/
+Letakkan model best.pt Anda di dalam direktori models/.
 
-Pastikan model sudah dilatih untuk kelas objek yang didukung
+Isi direktori static/audio/ dengan file .mp3 untuk setiap kosakata (contoh: banana.mp3).
 
-Siapkan file audio
-
-Buat folder static/audio/
-
-Tambahkan file MP3 untuk setiap kosakata dengan format: nama_inggris.mp3
-
-Contoh: banana.mp3, spoon.mp3, tomato.mp3
-
-Jalankan server Flask
+Jalankan Aplikasi
 
 bash
 python app_obb.py
-Akses aplikasi
+Akses Aplikasi
+Buka browser dan navigasi ke http://localhost:5000. Berikan izin untuk kamera dan mikrofon saat diminta.
 
-Buka browser dan kunjungi: http://localhost:5000
+🛠️ Tumpukan Teknologi (Tech Stack﻿)
+Kategori	Teknologi
+Backend	Flask, PyTorch, YOLO-OBB, OpenCV
+Frontend	HTML5, CSS3, JavaScript, Web Speech API, MediaDevices API
+Infrastruktur	Python 3.7+
+🗂️ Struktur Proyek
+text
+vision-english/
+├── app_obb.py              # Logika utama server Flask
+├── models/
+│   └── best.pt             # Model deteksi objek terlatih
+├── static/
+│   ├── audio/              # File audio pengucapan .mp3
+│   ├── sounds/             # Efek suara (benar, salah, dll.)
+│   └── icons/              # Ikon UI
+├── templates/
+│   ├── main.html           # Halaman utama aplikasi
+│   └── splash.html         # Halaman pembuka
+└── README.md
+🤝 Berkontribusi
+Kami sangat terbuka untuk kontribusi! Jika Anda ingin membantu, silakan:
 
-Izinkan akses kamera dan mikrofon saat diminta
+Fork repositori ini.
 
-📊 Kelas Objek yang Didukung
-Aplikasi dapat mendeteksi 25+ objek sehari-hari:
+Buat Branch Baru (git checkout -b fitur-keren-baru).
 
-Bahasa Inggris	Bahasa Indonesia
-banana	pisang,
-bowl	mangkuk,
-coin	koin
-cucumber	mentimun,
-cup	cangkir,
-eraser	penghapus,
-fork	garpu,
-glass	gelas,
-hair comb	sisir rambut,
-hanger	gantungan baju,
-long purple eggplant	terong ungu panjang,
-nail clippers	pemotong kuku,
-pen	pena,
-pencil	pensil,
-pencil sharpener	serutan pensil,
-phone charger	charger hp,
-plastic water bottle	botol air plastik,
-plate	piring,
-ruler	penggaris,
-rupiah banknote	uang kertas rupiah,
-scissors	gunting,
-snake fruit	salak,
-spoon	sendok,
-tomato	tomat,
-whiteboard marker	spidol papan tulis,
+Lakukan perubahan dan Commit (git commit -m 'Menambahkan fitur keren baru').
 
-🎮 Cara Menggunakan
-Buka aplikasi di browser
+Push ke branch Anda (git push origin fitur-keren-baru).
 
-Izinkan akses kamera
-
-Arahkan kamera ke objek yang ingin dipelajari
-
-Tekan tombol deteksi (tombol bulat besar)
-
-Dengarkan pengucapan dengan menekan tombol 🔊
-
-Latih pengucapan dengan menekan tombol 🎤
-
-Ucapkan kata yang diminta dalam bahasa Inggris
-
-Terima feedback﻿ dari sistem
-
-⚙️ Konfigurasi
-Threshold Deteksi
-python
-CLASS_THRESHOLDS = {
-    'default': 0.7  # Minimum confidence score
-}
-Terjemahan Bahasa
-python
-CLASS_TRANSLATIONS = {
-    'banana': 'pisang',
-    'spoon': 'sendok',
-    # ... tambahkan terjemahan lainnya
-}
-Koreksi Nama Kelas
-python
-CLASS_CORRECTIONS = {
-    'nail clipper': 'nail clippers',
-    # ... koreksi lainnya
-}
-🚨 Troubleshooting
-Masalah Kamera
-Pastikan browser memiliki izin akses kamera
-
-Periksa apakah kamera sedang digunakan aplikasi lain
-
-Coba refresh﻿ halaman
-
-Masalah Audio
-Periksa volume perangkat
-
-Pastikan file audio tersedia di folder static/audio/
-
-Browser harus mendukung Web Audio API
-
-Masalah Speech Recognition
-Hanya berfungsi di browser yang mendukung Web Speech API
-
-Chrome dan Edge memiliki dukungan terbaik
-
-Pastikan mikrofon terhubung dan diizinkan
-
-Masalah Model
-Verifikasi model best.pt ada di folder models/
-
-Pastikan PyTorch dan CUDA (jika menggunakan GPU) terinstal dengan benar
-
-Cek log server untuk pesan error
-
-📱 Browser yang Didukung
-✅ Google Chrome (rekomendasi)
-
-✅ Microsoft Edge
-
-⚠️ Mozilla Firefox (dengan beberapa batasan)
-
-⚠️ Safari (dengan batasan pada Speech Recognition)
-
-🔧 Pengembangan
-Menambahkan Kelas Baru
-Latih model dengan kelas baru
-Update file best.pt
-Tambahkan terjemahan di CLASS_TRANSLATIONS
-Tambahkan file audio di static/audio/
-Update daftar di halaman bantuan
-
-Customisasi UI
-Edit file splash.html dan main.html untuk tampilan
-Modifikasi CSS di bagian <style> untuk desain
-Tambahkan animasi di bagian JavaScript
-
-Optimasi Performa
-Gunakan GPU untuk inferensi yang lebih cepat
-Kompres file audio untuk loading﻿ lebih cepat
-Gunakan CDN untuk font dan library
-
-🤝 Kontribusi
-Kontribusi sangat diterima! Silakan ikuti langkah berikut:
-
-Fork repository
--Buat branch﻿ fitur (git checkout -b fitur-baru)
--Commit﻿ perubahan (git commit -m 'Menambahkan fitur')
--Push﻿ ke branch﻿ (git push origin fitur-baru)
--Buat Pull Request﻿
+Buat Pull Request.
 
 📄 Lisensi
-Proyek ini dilisensikan di bawah MIT License.
+Proyek ini berada di bawah Lisensi MIT. Lihat file LICENSE untuk detail lebih lanjut.
 
-👥 Kontak
-Untuk pertanyaan, bug report﻿, atau saran:
-Email: [muhammadarifmukti@gmail.com]
-Issues: GitHub Issues
+📧 Kontak
+Punya pertanyaan atau masukan?
 
-Whatsapp : 085158094475
+Buka Issue di repositori GitHub ini.
 
-🙏 Acknowledgments
-Model YOLO-OBB dari Ultralytics
+Hubungi via Email: namaanda@email.com.
 
-Web Speech API dari W3C
-
-Inspirasi dari berbagai aplikasi pembelajaran bahasa
-
-⭐ Jika proyek ini bermanfaat, jangan lupa berikan bintang di GitHub!
+<p align="center"> Dibuat dengan ❤️ untuk para pembelajar bahasa. <br> <strong>Jangan lupa berikan ⭐ jika Anda menyukai proyek ini!</strong> </p>
