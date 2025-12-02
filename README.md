@@ -130,11 +130,3 @@ Didistribusikan di bawah Lisensi MIT. Lihat `LICENSE` untuk informasi lebih lanj
 
 ---
 *Dibuat dengan ❤️ untuk edukasi.*
-Tips Agar Tampilan GitHub Makin Menarik
-Badge/Lencana: Bagian paling atas menggunakan badge (seperti "Python", "Flask") yang membuat repo terlihat profesional.
-
-Emoji: Penggunaan emoji yang relevan (📂, 🛠, ✨) membantu pembaca memindai bagian-bagian penting dengan cepat.​​
-
-Highlight Code: Blok kode (```bash) memberikan warna sintaks yang memudahkan pembaca membedakan perintah terminal dengan teks biasa [web:3].
-
-Struktur Jelas: Menggunakan "Daftar Isi" dan "Struktur Folder" memberikan kejelasan navigasi bagi pengembang lain yang ingin berkontribusi [web:5].
