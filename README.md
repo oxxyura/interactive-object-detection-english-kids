@@ -42,8 +42,11 @@ Pastikan susunan file Anda terlihat seperti ini agar aplikasi berjalan lancar:
 
 /my-yolo-app
 │
+
 ├── 📁 models
+
 │ └── best.pt # File model YOLO hasil training Anda
+
 │
 ├── 📁 static
 │ └── 📁 audio
