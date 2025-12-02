@@ -108,7 +108,7 @@ python app_obb.py
 
 text
 Akses aplikasi di browser melalui:
-👉 [**http://127.0.0.1:5000/**](http://127.0.0.1:5000/)
+👉 [**http://127.0.0.1:5000/**](localhost:5000)
 
 ---
 
