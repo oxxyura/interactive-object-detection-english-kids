@@ -1,1 +1,735 @@
+  <!DOCTYPE html>
+  <html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+     <link rel="icon" type="image/png" sizes="32x32" href="static/icons/find.png">
+    <title>Object Detection</title>
+    <style>
+      body { 
+      font-family: "Comic Neue", cursive;
+      font-weight: 800; 
+      font-style: normal; 
+      background:  #E8F5F5;
+      text-align: center; 
+      margin: 0; 
+      
+      }
+      h3 { 
+      color: #00796b;
+      }
+      video { 
+      width: 95%; 
+      max-width: 640px; 
+      border-radius: 10px; 
+      margin-top:5px;
+      }
+      .btn { 
+      padding: 10px 20px; 
+      margin: 5px; border: 
+      none; border-radius: 8px; 
+      font-size: 16px; 
+      color: white; 
+      cursor: pointer; }
+  #detect-btn {
+    --primary: 58, 167, 152; 
+    --secondary: 16, 89, 117; 
+    width: 60px;
+    height: 50px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    user-select: none;
+    touch-action: manipulation;
+    outline: 10px solid rgba(var(--primary), 0.5);
+    border-radius: 100%;
+    position: relative;
+    transition: 0.3s;
+    padding: 0;
+    background: transparent;
+    margin-top:20px;
+  }
 
+  #detect-btn .back {
+    background: rgb(var(--secondary));
+    border-radius: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  #detect-btn .front {
+    background: linear-gradient(0deg, rgba(var(--primary), 0.6) 20%, rgba(var(--primary), 1) 50%);
+    box-shadow: 0 0.5em 1em -0.2em rgba(var(--secondary), 0.5);
+    border-radius: 100%;
+    position: absolute;
+    border: 1px solid rgb(var(--secondary));
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-family: inherit;
+    transform: translateY(-15%);
+    transition: 0.15s;
+    color: rgb(var(--secondary));
+  }
+
+  #detect-btn:active .front {
+    transform: translateY(0%);
+    box-shadow: 0 0;
+  }
+  .speak-btn { 
+    appearance: button;
+    background-color: #1899D6;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: din-round,sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    line-height: 20px;
+    margin: 0;
+    outline: none;
+    overflow: visible;
+    padding: 13px 16px;
+    text-align: center;
+    text-transform: uppercase;
+    touch-action: manipulation;
+    transform: translateZ(0);
+    transition: filter .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: auto;
+    margin-right: 5px;
+  }
+
+  .speak-btn:after {
+    background-clip: padding-box;
+    background-color: #1CB0F6;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    bottom: -4px;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+
+  }
+
+  .speak-btn,
+  .speak-btn:focus {
+    user-select: auto;
+  }
+
+  .speak-btn:hover:not(:disabled) {
+    filter: brightness(1.1);
+    -webkit-filter: brightness(1.1);
+  }
+
+  .speak-btn:disabled {
+    cursor: auto;
+  }
+
+  .speak-btn:active {
+    border-width: 4px 0 0;
+    background: none;
+  }
+
+  #correction-btn {
+    appearance: button;
+    background-color: #1899D6;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    line-height: 20px;
+    margin: 0;
+    margin-top:5px;
+    outline: none;
+    overflow: visible;
+    padding: 13px 16px;
+    text-align: center;
+    text-transform: uppercase;
+    touch-action: manipulation;
+    transform: translateZ(0);
+    transition: filter .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: auto;
+  }
+
+  #correction-btn:after {
+    background-clip: padding-box;
+    background-color: #1CB0F6;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    bottom: -4px;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+  }
+
+  #correction-btn,
+  #correction-btn:focus {
+    user-select: auto;
+  }
+
+  #correction-btn:hover:not(:disabled) {
+    filter: brightness(1.1);
+    -webkit-filter: brightness(1.1);
+  }
+
+  #correction-btn:disabled {
+    cursor: auto;
+  }
+
+  #correction-btn:active {
+    border-width: 4px 0 0;
+    background: none;
+  }
+  #results,
+  #speech-tools {
+    width: auto;        
+    height: auto;       
+    margin: 10px auto; 
+    font-size: 20px; 
+    background: none;   
+    padding: 0;        
+    border-radius: 0;   
+    box-shadow: none;   
+  }
+  /* Loading Animation */
+  .loading-animation {
+    --speed-of-animation: 0.9s;
+    --gap: 6px;
+    --first-color: #4c86f9;
+    --second-color: #49a84c;
+    --third-color: #f6bb02;
+    --fourth-color: #f6bb02;
+    --fifth-color: #2196f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap);
+    height: 40px; /* Sedikit lebih besar untuk popup */
+  }
+
+  .loading-animation span {
+    width: 5px;  /* Lebih lebar untuk popup */
+    height: 25px; /* Lebih tinggi untuk popup */
+    background: var(--first-color);
+    animation: scale var(--speed-of-animation) ease-in-out infinite;
+  }
+
+  .loading-animation span:nth-child(2) {
+    background: var(--second-color);
+    animation-delay: -0.8s;
+  }
+
+  .loading-animation span:nth-child(3) {
+    background: var(--third-color);
+    animation-delay: -0.7s;
+  }
+
+  .loading-animation span:nth-child(4) {
+    background: var(--fourth-color);
+    animation-delay: -0.6s;
+  }
+
+  .loading-animation span:nth-child(5) {
+    background: var(--fifth-color);
+    animation-delay: -0.5s;
+  }
+
+  @keyframes scale {
+    0%, 40%, 100% {
+      transform: scaleY(0.05);
+    }
+    20% {
+      transform: scaleY(1);
+    }
+  }
+  .loader {
+    display: block;
+    --height-of-loader: 4px;
+    --loader-color: #1eff00ff; 
+    width: 130px;
+    height: var(--height-of-loader);
+    border-radius: 30px;
+    background-color: #000000;
+    position: relative;
+    margin: 20px auto; /* Agar di tengah */
+  }
+
+  .loader::before {
+    content: "";
+    position: absolute;
+    background: var(--loader-color);
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    border-radius: 30px;
+    animation: moving 1s ease-in-out infinite;
+  }
+
+  @keyframes moving {
+    50% {
+      width: 100%;
+    }
+    100% {
+      width: 0;
+      right: 0;
+      left: unset;
+    }
+  }
+
+  /* Tombol bantuan (ikon ?) */
+.help-icon {
+  font-family: "Comic Neue", cursive;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  background-color: #1CB0F6;
+  color: #fff;
+  font-size: 24px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+/* Popup daftar benda */
+#help-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  opacity: 0;
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  text-align: left;
+  max-width: 400px;
+  z-index: 2000;
+  transition: 0.3s;
+  display: none;
+}
+#help-popup.show {
+  display: block;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+#help-popup h4 {
+  margin-top: 0;
+  color: #1CB0F6;
+  text-align: center;
+}
+#help-popup ul {
+  padding-left: 20px;
+  margin: 0;
+}
+#help-popup button {
+  font-family: "Comic Neue", cursive;
+  margin-top: 15px;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  background: #1CB0F6;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+  /* Style popup yang sudah ada */
+  .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+  }
+  .popup-content {
+      background: #fff;
+      padding: 30px 50px;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      max-width: 80%;
+      transform: scale(0.8);
+      opacity: 0;
+      transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  }
+  .popup-content.show {
+      transform: scale(1);
+      opacity: 1;
+  }
+    #feedback {
+      font-size: 24px; /* Ukuran font lebih besar untuk pop-up */
+      font-weight: bold;
+      color: #004d40;
+      margin: 0;
+      
+    }
+      @media (max-width: 400px) {
+          .btn, .speak-btn, #correction-btn { width: 90%; font-size: 16px; }
+      }
+    </style>
+  </head>
+  <body>
+    <video id="video" autoplay playsinline></video>
+    <div class="help-icon" id="help-icon">❔</div>
+    <br> 
+    <button id="detect-btn">
+      <span class="back"></span>
+      <span class="front"></span>
+    </button>
+    <div id="results" style="color:#1899D6;font-family: din-round,sans-serif;font-size: 18px; font-weight: 700;">
+      <p id="alternating-text">Tekan Tombol Di Atas</p>
+    </div>
+    
+    <div id="speech-tools" style="display:none;">
+      <div id="audio-buttons"></div>
+      <div id="popup-overlay" class="popup-overlay">
+        <div id="popup-content" class="popup-content">
+          <div id="feedback"></div>
+        </div>
+      </div>
+      <button id="correction-btn" class="btn">🎤 Ucapkan</button>
+      
+    </div>
+    <div id="help-popup">
+  <h4>Daftar Benda Yang Bisa Di Deteksi</h4>
+  <ul id="item-list">
+  <li>Pisang</li>
+  <li>Mangkuk</li>
+  <li>Koin</li>
+  <li>Mentimun</li>
+  <li>Cangkir</li>
+  <li>Penghapus</li>
+  <li>Garpu</li>
+  <li>Gelas</li>
+  <li>Sisir</li>
+  <li>Gantungan baju</li>
+  <li>Terong ungu panjang</li>
+  <li>Pemotong kuku</li>
+  <li>Pulpen</li>
+  <li>Pensil</li>
+  <li>Rautan pensil</li>
+  <li>Pengisi daya ponsel</li>
+  <li>Botol air plastik</li>
+  <li>Piring</li>
+  <li>Penggaris</li>
+  <li>Uang kertas rupiah</li>
+  <li>Gunting</li>
+  <li>Salak</li>
+  <li>Sendok</li>
+  <li>Tomat</li>
+  <li>Spidol papan tulis</li>
+</ul>
+  <button id="close-help">Tutup</button>
+</div>
+
+    <script>
+      const video = document.getElementById('video');
+      const detectBtn = document.getElementById('detect-btn');
+      const resultsDiv = document.getElementById('results');
+      const speechTools = document.getElementById('speech-tools');
+      const audioButtonsDiv = document.getElementById('audio-buttons');
+      const correctionBtn = document.getElementById('correction-btn');
+
+      const popupOverlay = document.getElementById('popup-overlay');
+      const popupContent = document.getElementById('popup-content');
+      const feedback = document.getElementById('feedback');
+
+      let detectedWords = [];
+
+      // ------------------------- Kamera -------------------------
+      async function startCamera() {
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+          video.srcObject = stream;
+          detectBtn.disabled = false;
+        } catch {
+          resultsDiv.innerHTML = "<p style='color:red;'>Tidak dapat mengakses kamera.</p>";
+        }
+      }
+
+      startCamera();
+
+      // ------------------------- Deteksi -------------------------
+      detectBtn.onclick = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        canvas.getContext('2d').drawImage(video, 0, 0);
+        const imageData = canvas.toDataURL('image/jpeg');
+
+        resultsDiv.innerHTML = `<div class="loader"></div>`;
+
+        detectBtn.disabled = true;
+        speechTools.style.display = 'none';
+
+        fetch('/detect', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ image: imageData })
+        })
+        .then(res => res.json())
+        .then(data => {
+          if (data.error) {
+            resultsDiv.innerHTML = `<p style='color:red;'>${data.error}</p>`;
+            return;
+          }
+
+          const filtered = data.detections.filter(d => d.confidence > 0.7);
+          detectedWords = [...new Set(filtered.map(d => d.class.toLowerCase()))];
+
+          if (filtered.length === 0) {
+            resultsDiv.innerHTML = "<p style='color:red;'>Tidak Ada Objek Terdeteksi ⛔</p>";
+            return;
+          }
+
+          const translations = filtered.map(d => data.translations[d.class] || d.class);
+          resultsDiv.innerHTML = `${[...new Set(translations)].join(', ')}`;
+          resultsDiv.style.marginTop = "15px";    // atur jarak atas
+          resultsDiv.style.fontSize = "20px";
+          resultsDiv.style.textTransform = "uppercase";
+          generateAudioButtons(detectedWords);
+          speechTools.style.display = 'block';
+        })
+        .catch(err => {
+          resultsDiv.innerHTML = `<p style='color:red;'>Error: ${err.message}</p>`;
+        })
+        .finally(() => detectBtn.disabled = false);
+      };
+
+      // ------------------------- Audio Button Generator -------------------------
+      function generateAudioButtons(words) {
+        audioButtonsDiv.innerHTML = "";
+        const baseAudioPath = '/static/audio/';
+
+        words.forEach(word => {
+          const btn = document.createElement('button');
+          btn.textContent = `🔊 ${word}`;
+          btn.className = 'btn speak-btn';
+
+          btn.onclick = () => {
+            const audioFilename = word.toLowerCase().replace(/\s+/g, '_') + '.mp3';
+            const audioPath = baseAudioPath + audioFilename;
+            const audio = new Audio(audioPath);
+
+            audio.addEventListener('error', () => {
+              console.log(`Audio tidak ditemukan (${audioFilename}), pakai TTS`);
+              const utter = new SpeechSynthesisUtterance(word);
+              utter.lang = 'en-US';
+              speechSynthesis.speak(utter);
+            });
+
+            audio.play().catch(() => {
+              const utter = new SpeechSynthesisUtterance(word);
+              utter.lang = 'en-US';
+              speechSynthesis.speak(utter);
+            });
+          };
+
+          audioButtonsDiv.appendChild(btn);
+        });
+      }
+
+      // ------------------------- Pop-up Tools -------------------------
+      function showResultPopup(message) {
+        popupOverlay.style.display = 'flex';
+        feedback.innerHTML = message;
+        setTimeout(() => popupContent.classList.add('show'), 10);
+        setTimeout(() => {
+          popupContent.classList.remove('show');
+          setTimeout(() => popupOverlay.style.display = 'none', 300);
+        }, 2000);
+      }
+
+      function showListeningPopup() {
+        feedback.innerHTML = `
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+            <div class="loading-animation">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <p style="margin: 0; font-size: 24px; color:#1899D6;">Mendengarkan...</p>
+          </div>`;
+        popupOverlay.style.display = 'flex';
+        setTimeout(() => popupContent.classList.add('show'), 10);
+      }
+
+      function hideListeningPopup() {
+        popupContent.classList.remove('show');
+        setTimeout(() => popupOverlay.style.display = 'none', 300);
+      }
+
+      // ------------------------- Close Popup on Overlay Click -------------------------
+      popupOverlay.addEventListener('click', (event) => {
+        if (event.target === popupOverlay) {
+          popupContent.classList.remove('show');
+          setTimeout(() => popupOverlay.style.display = 'none', 300);
+        }
+      });
+      
+// ------------------------- Koreksi Pengucapan (Diperbarui: Tunggu Suara Selesai Baru Rekam) -------------------------
+const soundCorrect = new Audio('static/sounds/correct.mp3');  // suara benar
+const soundWrong   = new Audio('static/sounds/wrong.mp3');    // suara salah
+const soundMicOn   = new Audio('static/sounds/mic_on.mp3');   // suara notif mic aktif
+
+// Lama mikrofon aktif (ms)
+const micDuration = 5000; // 5 detik
+
+correctionBtn.onclick = () => {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  if (!SpeechRecognition) {
+    alert("Browser tidak mendukung Speech Recognition");
+    return;
+  }
+
+  showListeningPopup();
+  speechSynthesis.cancel();
+
+  function startRecognition() {
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
+    let micTimeout; // untuk hentikan otomatis
+
+    recognition.onstart = () => {
+      console.log("Mikrofon aktif...");
+      // hentikan otomatis setelah micDuration
+      micTimeout = setTimeout(() => {
+        recognition.stop();
+        console.log("Mikrofon otomatis berhenti.");
+      }, micDuration);
+    };
+
+    recognition.onresult = (event) => {
+      clearTimeout(micTimeout);
+      hideListeningPopup();
+
+      let said = event.results[0][0].transcript.toLowerCase().trim();
+      said = said.replace(/[.,!?]/g, '');
+
+      if (said.length < 2 || said.includes('text') || said.includes('speech')) {
+        showResultPopup("❌ Sistem mendeteksi suara internal. Coba ucapkan lagi.");
+        soundWrong.play();
+        return;
+      }
+
+      const matched = detectedWords.includes(said);
+      setTimeout(() => {
+        let message;
+        if (matched) {
+          message = `✅ Benar! Kamu mengucapkan: "${said}"`;
+          soundCorrect.play();
+        } else {
+          message = `❌ Salah. Kamu mengucapkan: "${said}", bukan: ${detectedWords.join(', ')}`;
+          soundWrong.play();
+        }
+        showResultPopup(message);
+      }, 500);
+    };
+
+    recognition.onerror = () => {
+      clearTimeout(micTimeout);
+      hideListeningPopup();
+      showResultPopup("❌ Gagal mengenali suara. Coba lagi.");
+      soundWrong.play();
+    };
+
+    recognition.onend = () => {
+      clearTimeout(micTimeout);
+      hideListeningPopup();
+      console.log("Sesi rekam selesai.");
+    };
+
+    recognition.start();
+  }
+
+  // 🔊 MAINKAN SUARA MIC ON DULU BARU MULAI REKAM
+  soundMicOn.play();
+
+  // Setelah audio micOn selesai → baru rekam suara
+  soundMicOn.onended = () => {
+    startRecognition();
+  };
+};
+
+      // ------------------ Teks Bergantian ------------------
+      const messages = ["Tekan Tombol Di Atas", "Pastikan Objek Jelas Di Kamera","Klik Tanda Tanya Untuk Info Objek Yang Bisa Deteksi"];
+      let currentIndex = 0;
+
+      setInterval(() => {
+        const textElement = document.getElementById("alternating-text");
+        if (textElement && detectedWords.length === 0) {
+          currentIndex = (currentIndex + 1) % messages.length;
+          textElement.innerText = messages[currentIndex];
+        }
+      }, 2500);
+      // Tombol ikon tanda tanya & popup daftar benda
+const helpIcon = document.getElementById('help-icon');
+const helpPopup = document.getElementById('help-popup');
+const closeHelp = document.getElementById('close-help');
+
+helpIcon.addEventListener('click', () => {
+  helpPopup.classList.add('show');
+});
+
+closeHelp.addEventListener('click', () => {
+  helpPopup.classList.remove('show');
+});
+
+    </script>
+  </body>
+  </html>
