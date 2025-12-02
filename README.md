@@ -48,18 +48,31 @@ Pastikan susunan file Anda terlihat seperti ini agar aplikasi berjalan lancar:
 │ └── best.pt # File model YOLO hasil training Anda
 
 │
+
 ├── 📁 static
+
 │ └── 📁 audio
+
 │ ├── pisang.mp3 # File audio per kelas objek
+
 │ ├── mangkuk.mp3
+
 │ └── ...
+
 │
+
 ├── 📁 templates
+
 │ ├── main.html # Halaman utama (kamera & hasil)
+
 │ └── splash.html # Halaman pembuka
+
 │
+
 ├── app_obb.py # Server utama Flask
+
 ├── requirements.txt # Daftar pustaka Python
+
 └── README.md # Dokumentasi ini
 
 text
