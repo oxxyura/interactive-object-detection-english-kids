@@ -73,6 +73,7 @@ Pastikan susunan file Anda terlihat seperti ini agar aplikasi berjalan lancar:
 ├── requirements.txt # Daftar pustaka Python
 
 └── README.md # Dokumentasi ini
+
 ---
 
 ## 🛠 Instalasi & Penggunaan
