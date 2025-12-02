@@ -5,7 +5,7 @@
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
 ![YOLO](https://img.shields.io/badge/YOLO-OBB-yellow?style=for-the-badge)
 
-> Aplikasi web sederhana untuk mendeteksi objek secara *real-time* menggunakan model YOLO Oriented Bounding Box (OBB), lengkap dengan pelafalan suara dalam Bahasa Indonesia.
+> Aplikasi web sederhana untuk mendeteksi objek secara *real-time* menggunakan model YOLO11 Oriented Bounding Box (OBB), lengkap dengan pelafalan suara dalam bahasa Inggris dan bahasa Indonesia.
 
 ---
 
