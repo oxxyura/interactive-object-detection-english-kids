@@ -1,4 +1,4 @@
-# 📸 Deteksi Objek YOLO-OBB Bahasa Indonesia
+# 📸 Interactive Object Detection using YOLO11 for Vocabulary and Pronunciation Enhancement in Elementary School English
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python&logoColor=white)
 ![Flask](https://img.shields.io/badge/Flask-2.0%2B-green?style=for-the-badge&logo=flask&logoColor=white)
