@@ -35,7 +35,6 @@ Dibangun dengan **Flask** sebagai backend dan **YOLOv8/11 OBB** untuk deteksi ob
 - 🚀 **Ringan**: Antarmuka sederhana dan responsif.
 
 ---
-
 ## 📂 Struktur Folder
 
 Pastikan susunan file Anda terlihat seperti ini agar aplikasi berjalan lancar:
@@ -74,9 +73,6 @@ Pastikan susunan file Anda terlihat seperti ini agar aplikasi berjalan lancar:
 ├── requirements.txt # Daftar pustaka Python
 
 └── README.md # Dokumentasi ini
-
-text
-
 ---
 
 ## 🛠 Instalasi & Penggunaan
